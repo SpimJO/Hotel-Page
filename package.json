@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "description": "property by jericho canlas. This is just a practice landing page for my 5 star hotel",
   "main": "index.js",
-  "scripts": {
-    "watch:sass": "node-sass sass/main.scss css/style.css -w",
-    "devserver": "live-server",
-    "start": "npm-run-all --parallel devserver watch:sass",
-    "compile:sass": "node-sass sass/main.scss css/style.comp.css",
-    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' css/style.comp.css -o css/style.prefix.css",
-    "compress:css": "node-sass css/style.prefix.css css/style.css --output-style compressed",
-    "build:css": "npm-run-all compile:sass prefix.css compress.css"
-  },
+"scripts": {
+  "watch:sass": "sass sass/main.scss css/style.css --watch",
+  "devserver": "live-server",
+  "start": "npm-run-all --parallel devserver watch:sass",
+  "compile:sass": "sass sass/main.scss css/style.comp.css",
+  "prefix:css": "postcss css/style.comp.css --use autoprefixer --output css/style.prefix.css --env 'last 10 versions'",
+  "compress:css": "sass css/style.prefix.css css/style.css --style=compressed",
+  "build:css": "npm-run-all compile:sass prefix:css compress:css"
+},
   "author": "Jericho Canlas",
   "license": "ISC",
   "dependencies": {
